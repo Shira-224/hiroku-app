@@ -1,15 +1,8 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import { Slot } from 'expo-router';
+// アプリ全体のデザイン（Tailwindなど）を維持するためにこれだけ残します
+import '../global.css';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
-  );
+export default function RootLayout() {
+  // 余計な黒いバーなどは一切描画せず、 index.tsx の中身だけをそのまま出す魔法のコンポーネントです
+  return <Slot />;
 }
