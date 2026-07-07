@@ -1,6 +1,6 @@
-import { useRouter } from 'expo-router';
+// ★ Link を追加で読み込む
+import { Link, useRouter } from 'expo-router';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// ★ 先ほど作ったコンポーネントを読み込む
 import BackButton from '../components/BackButton';
 
 export default function EditScreen() {
@@ -11,11 +11,8 @@ export default function EditScreen() {
       
       {/* --- ヘッダー --- */}
       <View style={styles.header}>
-        {/* ★ コンポーネントを呼び出すだけ！ */}
         <BackButton />
-        
         <Text style={styles.headerTitle}>詳細編集</Text>
-        
         <TouchableOpacity style={styles.deleteButton}>
           <Text style={styles.deleteButtonText}>消去</Text>
         </TouchableOpacity>
@@ -32,10 +29,12 @@ export default function EditScreen() {
         {/* --- アクションリスト --- */}
         <View style={styles.actionList}>
           
-          {/* 会話内容を保存するボタン */}
-          <TouchableOpacity style={styles.highlightButton}>
-            <Text style={styles.highlightButtonText}>💬 会話内容を保存する</Text>
-          </TouchableOpacity>
+          {/* ★ ここを変更！ Link で包んで href="/talk" を指定 */}
+          <Link href="/talk" asChild>
+            <TouchableOpacity style={styles.highlightButton}>
+              <Text style={styles.highlightButtonText}>💬 会話内容を保存する</Text>
+            </TouchableOpacity>
+          </Link>
 
           {/* グループ1 */}
           <View style={styles.listGroup}>
