@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+// ★ expo-routerのLinkコンポーネントを追加
+import { Link } from 'expo-router';
 // ★ 作成した共通コンポーネントを読み込む
 import BackButton from '../components/BackButton';
 
@@ -31,6 +33,7 @@ export default function ViewScreen() {
 
           {/* アクションボタン（左右に並べる） */}
           <View style={styles.actionButtons}>
+            {/* プロフィールを見るボタン（モーダルを開く） */}
             <TouchableOpacity 
               style={styles.viewButton} 
               onPress={() => setModalVisible(true)}
@@ -38,9 +41,12 @@ export default function ViewScreen() {
               <Text style={styles.viewButtonText}>プロフィールを見る</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.viewButton}>
-              <Text style={styles.viewButtonText}>トーク履歴を見る</Text>
-            </TouchableOpacity>
+            {/* ★ トーク履歴を見るボタン（Linkを使ってhistory.tsxへ遷移） */}
+            <Link href="/history" asChild>
+              <TouchableOpacity style={styles.viewButton}>
+                <Text style={styles.viewButtonText}>トーク履歴を見る</Text>
+              </TouchableOpacity>
+            </Link>
           </View>
           
         </View>
